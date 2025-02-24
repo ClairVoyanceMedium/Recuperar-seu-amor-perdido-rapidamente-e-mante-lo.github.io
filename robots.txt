@@ -1,42 +1,76 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
+# robots.txt – Versão Definitiva 2025-02-24
+#
+# Este arquivo foi elaborado com as melhores práticas atuais e futuras para:
+#   • Maximizar a indexação por motores de busca globais e regionais, com foco especial no mercado brasileiro,
+#   • Otimizar a indexação em dispositivos móveis (Googlebot-Mobile, etc.),
+#   • Facilitar a indexação de imagens, vídeos e conteúdos ricos,
+#   • Gerenciar eficientemente páginas dinâmicas, bloqueando URLs com parâmetros desnecessários,
+#   • Evitar sobrecarregar os servidores dos motores de busca prioritários (Google e Bing), removendo delays desnecessários.
+#
+# Endereço do site:
+# https://clairvoyancemedium.github.io/Recuperar-seu-amor-perdido-rapidamente-e-mante-lo.github.io/
+#
+# Sitemap e Host – orientações essenciais para os crawlers:
+Sitemap: https://clairvoyancemedium.github.io/Recuperar-seu-amor-perdido-rapidamente-e-mante-lo.github.io/sitemap.xml
+Host: clairvoyancemedium.github.io
+
+# DIRETIVAS GERAIS para TODOS os bots:
 User-agent: *
-Disallow: /admin/
-Disallow: /tmp/
-Disallow: /private/
-
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
-
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
+# Sem diretórios sensíveis neste site (os diretórios /cgi-bin/, /tmp/, /logs/ e /private/ não existem)
+Crawl-delay: 10
+Allow: /
+# Bloqueia URLs dinâmicas com parâmetros para evitar conteúdo duplicado
+Disallow: /*?*
+# Remove parâmetros de acompanhamento (reconhecido por alguns crawlers, como o do Yandex)
+Clean-param: utm_source&utm_medium&utm_campaign
+# Permite acesso explícito a recursos multimídia para indexação otimizada
 Allow: /images/
+Allow: /videos/
+Allow: /media/
 
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
+# DIRETIVAS para os principais motores de busca – sem delay para maximizar desempenho:
 User-agent: Googlebot
 Allow: /
-User-agent: AdsBot-Google
+
+User-agent: Googlebot-Mobile
 Allow: /
+
+User-agent: Googlebot-Image
+# (Sem delay para otimizar a indexação de imagens)
+Allow: /
+
+User-agent: Googlebot-Video
+# (Sem delay para otimizar a indexação de vídeos)
+Allow: /
+
 User-agent: Bingbot
 Allow: /
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
-Disallow: /
-User-agent: EvilScraper
-Disallow: /
+# DIRETIVAS para bots regionais e especializados (IA, voz, etc.) – com Crawl-delay para gerenciar a carga:
+User-agent: Yandex
+Crawl-delay: 10
+Allow: /
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+User-agent: BaiduSpider
+Crawl-delay: 10
+Allow: /
+
+User-agent: AI-Bot
+Crawl-delay: 10
+Allow: /
+
+User-agent: VoiceBot
+Crawl-delay: 10
+Allow: /
+
+# DIRETIVAS para futuros motores de busca regionais brasileiros (ex.: UOLBot, GloboBot)
+# Estes podem ser ativados quando comprovadamente surgirem:
+# User-agent: UOLBot
+# Crawl-delay: 10
+# Allow: /
+#
+# User-agent: GloboBot
+# Crawl-delay: 10
+# Allow: /
+
+# Fim do arquivo robots.txt
